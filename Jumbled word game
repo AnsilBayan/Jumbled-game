@@ -1,0 +1,80 @@
+import random
+
+def choose():
+    words=['M416', 'scarl', 'aug', 'deserteagle','M249','ump45','uzi','P90','M1014','ThompsonSMG','M16A4','S1897','honeybadger','vector','mk47mutant','groza','FAMAS']
+    pick=random.choice(words)
+    return pick
+
+def jumble(word):
+    jumbled_word="".join(random.sample(word,len(word)))
+    return jumbled_word
+
+def thank(p1,p2,pp1,pp2):
+    print('Thankyou for playing,', p1 ,'\nYour Score is', pp1)
+    print('Thankyou for playing,', p2 ,'\nYour Score is', pp2)
+
+def play():
+    p1 = input('Player 1,\nPlease Enter Your name: ' )
+    p2 = input('Player 2, \nPlease Enter Your name: ')
+    pp1=0
+    pp2=0
+
+    turn=0
+
+    while(1):
+
+        picked_word= choose()
+
+        question= jumble(picked_word)
+
+        print('Rearrange the word to get a meaningful word: ',question)
+
+        if turn%2==0:
+            print(p1 +', it is your turn')
+
+            ans = input('What is on your mind? ')
+
+            if ans==picked_word:
+                pp1=pp1+1
+
+                print('You are right,' + p1+' total score is: ',pp1)
+            else:
+
+                print('Wrong answer, it was ',picked_word)
+                print('Would you like to continue?')
+            c=input('If yes, press 1 and if no, press 0: ')
+
+            if c=='0':
+                thank(p1,p2,pp1,pp2)
+                break
+        
+        else:
+            print(p2+', it is your turn')
+
+            ans = input('What is on your mind? ')
+
+            if ans==picked_word:
+                pp2=pp2+1
+
+                print('You are right,' + p2+ 'total score is: ',pp2)
+            else:
+
+                print('Wrong answer, it was ',picked_word)
+                print('Would you like to continue?')
+            c=input('If yes, press 1,  if no, press 0')
+            if c=='0':
+                thank(p1,p2,pp1,pp2)
+            
+                break
+        turn=turn+1
+
+
+play()
+
+                
+
+                
+
+
+
+
